@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Confirm | LibManage{% endblock %}
+{% block content %}
+<div class="row justify-content-center py-4"><div class="col-md-7"><div class="panel p-4 p-md-5">
+{% if kind == "return" %}
+<h2 class="fw-bold">Confirm return</h2><p>Mark <strong>{{ object.book.title }}</strong>, borrowed by {{ object.student.full_name }}, as returned?</p>
+<form method="post">{% csrf_token %}<button class="btn btn-success" type="submit">Confirm Return</button><a class="btn btn-outline-secondary" href="{% url 'loans' %}">Cancel</a></form>
+{% else %}
+<h2 class="fw-bold">Confirm delete</h2><p>Are you sure you want to delete this {{ kind }}: <strong>{{ object }}</strong>?</p>
+<form method="post">{% csrf_token %}<button class="btn btn-danger" type="submit">Delete</button>{% if kind == "book" %}<a class="btn btn-outline-secondary" href="{% url 'books' %}">Cancel</a>{% else %}<a class="btn btn-outline-secondary" href="{% url 'students' %}">Cancel</a>{% endif %}</form>
+{% endif %}
+</div></div></div>
+{% endblock %}

@@ -1,0 +1,1 @@
+venv/echo __pycache__/echo *.py[cod]echo db.sqlite3echo .envecho staticfiles/

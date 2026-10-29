@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | LibManage{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4"><div><h1 class="fw-bold">Dashboard</h1><p class="text-secondary mb-0">Your library at a glance.</p></div><a href="{% url 'loan_issue' %}" class="btn btn-primary">+ Issue a Book</a></div>
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-xl-3"><div class="stat-card"><div>📚 Book titles</div><div class="stat-number">{{ book_count }}</div><a href="{% url 'books' %}">Manage books →</a></div></div>
+  <div class="col-sm-6 col-xl-3"><div class="stat-card"><div>🎓 Students</div><div class="stat-number">{{ student_count }}</div><a href="{% url 'students' %}">Manage students →</a></div></div>
+  <div class="col-sm-6 col-xl-3"><div class="stat-card"><div>📖 Active loans</div><div class="stat-number">{{ issued_count }}</div><a href="{% url 'loans' %}">View loans →</a></div></div>
+  <div class="col-sm-6 col-xl-3"><div class="stat-card"><div>⏰ Overdue</div><div class="stat-number">{{ overdue_count }}</div><a href="{% url 'loans' %}">Check returns →</a></div></div>
+</div>
+<div class="panel p-4"><h4 class="fw-bold mb-3">Recent issues</h4>
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Book</th><th>Student</th><th>Issued</th><th>Due</th><th>Status</th></tr></thead><tbody>
+{% for loan in recent_loans %}<tr><td>{{ loan.book.title }}</td><td>{{ loan.student.full_name }}</td><td>{{ loan.issued_at }}</td><td>{{ loan.due_date }}</td><td>{% if loan.returned_at %}<span class="badge text-bg-success">Returned</span>{% elif loan.is_overdue %}<span class="badge text-bg-danger">Overdue</span>{% else %}<span class="badge text-bg-primary">Issued</span>{% endif %}</td></tr>
+{% empty %}<tr><td colspan="5" class="text-center text-secondary py-4">No books have been issued yet.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

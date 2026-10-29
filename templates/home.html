@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Home | LibManage{% endblock %}
+{% block content %}
+<section class="hero p-4 p-md-5 mb-5">
+  <div class="row align-items-center">
+    <div class="col-lg-8">
+      <p class="text-uppercase fw-bold mb-2">A smarter way to manage your library</p>
+      <h1 class="display-5 fw-bold">Every book. Every reader. One simple system.</h1>
+      <p class="lead mt-3">Organize books, manage students, and track book issues and returns from one place.</p>
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}" class="btn btn-light btn-lg mt-2">Open Dashboard</a>
+      {% else %}
+        <a href="{% url 'signup' %}" class="btn btn-light btn-lg mt-2">Get Started</a>
+        <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg mt-2 ms-2">Login</a>
+      {% endif %}
+    </div>
+    <div class="col-lg-4 text-center mt-4 mt-lg-0"><div style="font-size:110px">📚</div><h4>Read. Learn. Grow.</h4></div>
+  </div>
+</section>
+<div class="row g-3 mb-5">
+  <div class="col-md-4"><div class="stat-card"><div>📚 Total book titles</div><div class="stat-number">{{ book_count }}</div></div></div>
+  <div class="col-md-4"><div class="stat-card"><div>👩‍🎓 Registered students</div><div class="stat-number">{{ student_count }}</div></div></div>
+  <div class="col-md-4"><div class="stat-card"><div>📖 Books currently issued</div><div class="stat-number">{{ issued_count }}</div></div></div>
+</div>
+<h2 class="fw-bold text-center mb-4">Everything your library needs</h2>
+<div class="row g-4">
+  <div class="col-md-4"><div class="panel p-4 h-100"><h4>📘 Book Catalog</h4><p>Store book titles, authors, categories, ISBNs, and quantities.</p></div></div>
+  <div class="col-md-4"><div class="panel p-4 h-100"><h4>🎓 Student Records</h4><p>Keep student IDs and contact details organized.</p></div></div>
+  <div class="col-md-4"><div class="panel p-4 h-100"><h4>🔄 Issue & Return</h4><p>Track borrowing, due dates, and overdue books.</p></div></div>
+</div>
+{% endblock %}
