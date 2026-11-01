@@ -4,6 +4,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "change-this-development-key-before-deployment"
 DEBUG = False
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.vercel.app',
+]
+
 ALLOWED_HOSTS = [
     'libarymanagment-evla.vercel.app',
     'libarymanagment.vercel.app',
