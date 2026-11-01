@@ -2,7 +2,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "change-this-development-key-before-deployment"
-DEBUG = True
+DEBUG =  False
 ALLOWED_HOSTS = [
     'librarymanagment.vercel.app',
     'localhost',
