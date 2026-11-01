@@ -2,12 +2,15 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "change-this-development-key-before-deployment"
-DEBUG =  False
+DEBUG = False
+
 ALLOWED_HOSTS = [
-    'librarymanagment.vercel.app',
+    'libarymanagment-evla.vercel.app',
+    'libarymanagment.vercel.app',
     'localhost',
     '127.0.0.1',
 ]
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
