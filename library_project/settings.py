@@ -50,8 +50,7 @@ TEMPLATES = [{
         ],
     },
 }]
-
-WSGI_APPLICATION = "library_project.wsgi.application"
+WSGI_APPLICATION = 'library_project.wsgi.application'
 ASGI_APPLICATION = "library_project.asgi.application"
 
 DATABASES = {
